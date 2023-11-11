@@ -1,0 +1,35 @@
+#Euler Method
+from numpy import arange,exp
+from pylab import plot,xlabel,ylabel,show,xscale,yscale
+
+def f(x,t):
+    tau=3.053*60
+    return -x/tau
+
+a=0             #Start of the interval
+b=1000          #End of the interval
+N=100000        #Number of steps
+h=(b-a)/N       #Size of a single step
+x=1000          #initial condition
+tau=3.053*60    #Half life of thallium in seconds
+
+Tpoints=arange(a,b,h)
+xpoints=[]
+for t in Tpoints:
+    xpoints.append(x)
+    x += h*f(x,t)
+    
+plot(Tpoints,xpoints,"ms",ms=2)
+plot(Tpoints,1000*exp(-Tpoints/tau),lw=1)
+xscale("log")
+yscale("log")
+
+xlabel("t")
+ylabel("N(t)")
+show()
+
+plot(Tpoints,xpoints,"ms",ms=2)
+plot(Tpoints,1000*exp(-Tpoints/tau),lw=1)
+xlabel("t")
+ylabel("N(t)")
+show()
