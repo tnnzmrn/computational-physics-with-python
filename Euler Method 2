@@ -1,0 +1,22 @@
+from math import sin
+from numpy import arange
+from pylab import plot,xlabel,ylabel,show
+def f(x,t):
+    return -x**3+sin(t)
+
+a=0             #Start of the interval
+b=10          #End of the interval
+N=20        #Number of steps
+h=(b-a)/N       #Size of a single step
+x=0          #initial condition
+
+Tpoints=arange(a,b,h)
+xpoints=[]
+for t in Tpoints:
+    xpoints.append(x)
+    x += h*f(x,t)
+    
+plot(Tpoints,xpoints)
+xlabel("t")
+ylabel("x(t)")
+show()
