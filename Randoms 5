@@ -1,0 +1,5 @@
+from numpy import random
+x3=random.randn(10000) #Return samples from the "standard normal" distribution.
+                      # mean :0 and variance :1
+from pylab import hist
+count, bins, ignored=hist(x3, 50, density=True)
