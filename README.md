@@ -1,1 +1,1 @@
-# computational-physics-with-python
+# Computational-Physics-with-Python
