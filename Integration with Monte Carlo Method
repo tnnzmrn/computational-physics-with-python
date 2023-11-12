@@ -1,0 +1,27 @@
+from math import sin
+from random import random
+
+def f(x):
+    return (sin(1/(x*(2-x))))**2
+
+N=100000
+count=0
+for i in range(N):
+    x=2*random()
+    y=random()
+    if y<f(x):
+        count += 1
+I=2*count/N
+print(I) 
+
+from pylab import plot,show,fill_between,xlim,ylim,figure
+from numpy import linspace,sin
+def f(x):
+    return (sin(1/(x*(2-x))))**2
+x=linspace(0.000001,1.999999,10000)
+figure(figsize=(12,7))
+xlim(0,2)
+ylim(0,1)
+plot(x,f(x),'b')
+fill_between(x,f(x),facecolor='aqua')
+show() 
