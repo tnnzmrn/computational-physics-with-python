@@ -1,0 +1,3 @@
+r1=random.rand(10000)
+from pylab import hist
+hist(r1,100)
