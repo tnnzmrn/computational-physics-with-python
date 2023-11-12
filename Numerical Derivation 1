@@ -1,0 +1,11 @@
+from numpy import sin,cos,pi,abs,linspace
+from pylab import plot,show,xscale,yscale,legend,xlabel,ylabel,figure,grid,xticks,yticks
+figure(figsize=(10,5))
+def f(x):
+    return sin(x)
+def dfdx_a(x):
+    return cos(x)
+def dfdx_c(x,delta):
+    return (f(x+delta)-f(x-delta))/(2.0*delta)
+xtest=linspace(-2*pi,pi,20)
+plot(xtest,f(xtest))
