@@ -1,0 +1,48 @@
+from pylab import plot,show,xlabel,ylabel,grid,figure,xscale,yscale,legend
+from math import *
+
+def trapezoid(f,a,b,N):
+    h=(b-a)/N
+    S=0.5*f(a)+0.5*f(b)
+    for k in range(1,N):
+        S=S+f(a+k*h)
+    return S*h
+
+def simpson(f,a,b,N):
+    from numpy import sum,linspace
+    if N % 2==1:
+        raise ValueError("N must be an even integer.")
+        
+    dx=(b-a)/N
+    x=linspace(a,b,N+1)
+    y=f(x)
+    S=dx/3*(4.*sum(y[1::2])+2.*sum(y[2:-2:2])+y[0]+y[-1])
+    return S
+
+def f1(x):
+    return 1/x
+###################some tests###############
+approximation1=trapezoid(f1,1.0,2.0,10)
+approximation2=simpson(f1,1.0,2.0,10)
+print(approximation1,log(2.0))
+print(approximation2,log(2.0))
+############################################
+
+list1=[]
+delta1=[]
+delta2=[]
+for j in range(2,25):
+    approximation1=trapezoid(f1,1.0,2.0,2**j)
+    approximation2=simpson(f1,1.0,2.0,2**j)
+    list1.append(2**j)
+    delta1.append(abs(approximation1-log(2.0)))
+    delta2.append(abs(approximation2-log(2.0)))
+    
+plot(list1,delta1,"r:o",label="trapezoid")
+plot(list1,delta2,"b:o",label="simpson")
+
+xscale('log')
+yscale('log')
+legend()
+grid()
+show() 
