@@ -1,0 +1,10 @@
+from numpy import random
+outcome=random.randint(1,10,3) # 3 random integers in (1,10)
+print(type(outcome))
+print(outcome)
+outcome=random.randint(4,8) # 1 random integers in (4,8)
+print(outcome)
+outcome=random.randint(4) # 1 random integers in (0,4)
+print(outcome)
+outcome=random.randint(4,size=(3,5))
+print(outcome) 
