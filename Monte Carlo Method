@@ -1,0 +1,19 @@
+from pylab import plot,show,xlabel,ylabel,figure
+from numpy import random,sqrt,sum,pi,cos,sin,arange
+
+n      =10**4 #Number of stones
+x      =random.rand(n)
+y      =random.rand(n)
+r      =sqrt(x**2+y**2)
+inside =r<=1
+outside=1-inside
+print(n,sum(inside)/float(n),pi/4),inside,outside # A c/A s; \pi/4
+
+figure(figsize=(7,7))
+phi=arange(0,pi/2,0.001)
+plot(cos(phi),sin(phi),'k-',linewidth=2)
+plot(x*inside,y*inside,'b.',markersize=1)
+plot(x*outside,y*outside,'g.',markersize=1)
+xlabel('$x$',fontsize=18)
+ylabel('$x$',fontsize=18)
+show()
