@@ -1,0 +1,20 @@
+from scipy.special import legendre
+from numpy import linspace 
+from pylab import plot,xlim,ylim,show,legend,figure,xlabel,ylabel,grid
+
+x=linspace(-1.0,1.0,60)
+figure(figsize=(12,7))
+for n in range(6):
+    Pn=legendre(n)
+    y=Pn(x)
+    plot(x,y,label='order:'+str(n),lw=4)
+plot(x,[0.0]*len(x),"k--",lw=1)
+
+
+xlim(-1.0,1.0)
+ylim(-1.0,1.0)
+xlabel('$x$',fontsize="15")
+ylabel("$P_N(x)$",fontsize="15")
+legend()
+grid()
+show()
