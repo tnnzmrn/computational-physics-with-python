@@ -1,0 +1,27 @@
+from numpy import sin,pi,empty,sqrt
+a=200
+lambdaa=5;k=(2.0*pi)/lambdaa
+d=40
+xi_0=1
+N_p=500
+dd=a/N_p #distance between the units
+x1=a/2-d/2
+x2=a/2+d/2
+y1=a/2
+y2=a/2
+xi=empty((N_p,N_p),float)
+for i in range(N_p):
+    x=dd*i
+    for j in range (N_p):
+        y=dd*j
+        r1=sqrt((x-x1)**2.0+(y-y1)**2.0)
+        r2=sqrt((x-x2)**2.0+(y-y2)**2.0)
+        xi[j,i]=xi_0*sin(k*r1)+xi_0*sin(k*r2) 
+
+xi[:,100:200]=0.0
+xi[:,300:400]=0.0 
+
+from pylab import imshow,savefig,colorbar
+imshow(xi,origin="lower")
+savefig("figure3-2023.pdf")
+colorbar()
