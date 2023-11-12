@@ -1,0 +1,32 @@
+from numpy import sin,cos,pi,abs,linspace
+from pylab import plot,show,xscale,yscale,legend,xlabel,ylabel,figure,grid,xticks,yticks
+figure(figsize=(10,5))
+def f(x):
+    return sin(x)
+def dfdx_a(x):
+    return cos(x)
+def dfdx_c(x,delta):
+    return (f(x+delta)-f(x-delta))/(2.0*delta)
+delta=1.0;x0=pi/4
+d=[];e=[]
+for i in range(50):
+    delta=0.5*delta
+    error=abs(dfdx_c(x0,delta)-dfdx_a(x0))
+    
+    d.append(delta)
+    e.append(error)
+    
+plot(d,e,'ro',label="absolute error")
+plot(d,e,'b-')
+
+yscale("log")
+xscale("log")
+xlabel("$\delta$",fontsize=20)
+ylabel("$|f^\prime_a(x_0)-f^\prime_c(x_0)|$",fontsize=20)
+
+legend()
+grid()
+xticks(fontsize=14, rotation=90)
+yticks(fontsize=14)
+
+show()
