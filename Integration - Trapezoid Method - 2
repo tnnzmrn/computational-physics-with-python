@@ -1,0 +1,16 @@
+def g(x):
+    from numpy import sin
+    return sin(x)
+from pylab import linspace,plot,show,fill_between,pi
+N=4; a=0.0; b=pi
+#X and Y values for plotting y=f(x)
+X=linspace(a,b,100)
+Y=g(X)
+plot(X,Y,"k",lw=3)
+#x and y values for the trapezoid rule 
+x=linspace(a,b,N+1)
+y=g(x)
+print(x)
+print(y)
+for i in range(N):
+    fill_between([x[i],x[i+1]],[y[i],y[i+1]])
