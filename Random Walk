@@ -1,0 +1,15 @@
+from pylab import plot,show,xlabel,ylabel,figure,hist
+from numpy import random
+N=150 #Number of steps 
+M=4000  #Number of walkers 
+figure(figsize=(10,5))
+steps=range(N)
+xfinal=[]
+for i in range(M): #loop over the number of walkers 
+    x = [0]*N #position at each step in walk 
+    for n in steps[1:]:
+        x[n] = x[n-1]+random.choice([-1,+1])
+    xfinal.append(x[n])
+xlabel("step")
+ylabel("x(step)")
+count,nbin,patch=hist(xfinal,41,density=True) 
