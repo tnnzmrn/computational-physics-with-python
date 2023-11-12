@@ -1,0 +1,4 @@
+from pylab import plot,show
+count, bins, ignored=hist(s, 30, density=True)
+plot(bins, 1/(sigma*sqrt(2*pi))*exp(-(bins - mu)**2/(2*sigma**2)),linewidth=2,color='r')
+show()
