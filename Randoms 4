@@ -1,0 +1,4 @@
+from numpy import random 
+from pylab import hist
+x1=random.uniform(0,100,10000)
+count, bins, ignored=hist(x1,20,density=True)
