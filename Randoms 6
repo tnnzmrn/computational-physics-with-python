@@ -1,0 +1,5 @@
+from numpy import random,mean,std,exp,sqrt,pi
+mu, sigma=0,0.1 # mean and standard deviation
+s=random.normal(mu, sigma, 10000)
+print(abs(mu - mean(s)))
+print(abs(sigma - std(s)))
